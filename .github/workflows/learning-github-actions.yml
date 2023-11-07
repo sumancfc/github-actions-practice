@@ -1,0 +1,17 @@
+name: Learning Github Actions
+
+run-name: ${{github.actor}} is learning Github Actions
+
+on: [push]
+
+jobs:
+  check-bats-version:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16.x"
+
+      - run: npm install -g bats
+      - run: bats -v
